@@ -4,14 +4,22 @@
 
 #ifndef GAME_H
 #define GAME_H
+#include <memory>
 
+#include "Ball.h"
+#include "Player.h"
 
 
 class Game {
 public:
 	void Init();
-	void Update();
+	void Update(float dt);
 	void Draw();
+	void DeInit();
+
+private:
+	Player* m_player = nullptr;
+	Ball* m_testBall = nullptr;
 };
 
 

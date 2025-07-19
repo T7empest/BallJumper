@@ -9,7 +9,12 @@ add_executable(BallJumper src/main.cpp
         src/Player.cpp
         include/Player.h
         src/Ball.cpp
-        include/Ball.h)
+        include/Ball.h
+        include/Utils.h
+        include/Input.h
+        include/Resources.cpp
+        include/Resources.h
+)
 
 # Find raylib package
 find_package(raylib REQUIRED)

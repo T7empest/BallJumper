@@ -3,3 +3,8 @@
 //
 
 #include "Ball.h"
+
+void Ball::Draw()
+{
+	DrawCircleV(m_position, 40, RED);
+}
