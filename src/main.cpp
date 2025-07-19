@@ -16,10 +16,12 @@ int main()
 	while (!WindowShouldClose())
 	{
 		game.Update();
+
 		BeginDrawing();
-		ClearBackground(SKYBLUE);
-		game.Draw();
+			ClearBackground(SKYBLUE);
+			game.Draw();
 		EndDrawing();
 	}
+
 	CloseWindow();
 }
