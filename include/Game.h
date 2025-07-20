@@ -5,6 +5,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include <memory>
+#include <vector>
 
 #include "Ball.h"
 #include "Player.h"
@@ -18,8 +19,8 @@ public:
 	void DeInit();
 
 private:
+	std::vector<Ball*> m_balls;
 	Player* m_player = nullptr;
-	Ball* m_testBall = nullptr;
 };
 
 

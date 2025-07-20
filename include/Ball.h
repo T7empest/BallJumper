@@ -14,8 +14,12 @@ public:
 
 	void Draw();
 
+	Vector2 GetPosition();
+	float GetRadius();
+
 private:
 	Vector2 m_position;
+	float m_radius = 50;
 };
 
 

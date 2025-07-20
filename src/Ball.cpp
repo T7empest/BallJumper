@@ -6,5 +6,15 @@
 
 void Ball::Draw()
 {
-	DrawCircleV(m_position, 40, RED);
+	DrawCircleV(m_position, m_radius, RED);
+}
+
+Vector2 Ball::GetPosition()
+{
+	return m_position;
+}
+
+float Ball::GetRadius()
+{
+	return m_radius;
 }
