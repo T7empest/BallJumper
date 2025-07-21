@@ -11,8 +11,8 @@
 #include "Resources.h"
 
 constexpr float PLAYER_SPEED = 100;
-constexpr float PLAYER_ACCELERATION = 3;
-constexpr float PLAYER_FALLING_SPEED = 150;
+constexpr float PLAYER_ACCELERATION = 5;
+constexpr float PLAYER_FALLING_SPEED = 200;
 
 enum class CollisionDirection
 {
@@ -43,6 +43,9 @@ public:
 	CollisionDirection GetCollisionDirection(Ball* ball);
 
 	void FixCollisionOverlap(Ball* ball);
+
+	Vector2 GetCenterPosition();
+
 
 private:
 	Vector2 m_position;

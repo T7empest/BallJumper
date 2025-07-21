@@ -2,7 +2,7 @@
 // Created by Lukáš Blažek on 19.07.2025.
 //
 
-#include "Resources.h"
+#include "../include/Resources.h"
 
 #define ASSET_PATH "../../assets/"
 

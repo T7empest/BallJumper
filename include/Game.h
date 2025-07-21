@@ -10,6 +10,11 @@
 #include "Ball.h"
 #include "Player.h"
 
+namespace GameConstants
+{
+	inline constexpr int DEFAULT_WINDOW_WIDTH{800};
+	inline constexpr int DEFAULT_WINDOW_HEIGHT{800};
+}
 
 class Game {
 public:
@@ -18,11 +23,15 @@ public:
 	void Draw();
 	void DeInit();
 
+	void InitCamera();
+	void UpdateCamera();
+
 private:
 	std::vector<Ball*> m_balls;
 	Player* m_player = nullptr;
-};
 
+	Camera2D camera = { 0 };
+};
 
 
 #endif //GAME_H
