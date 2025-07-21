@@ -12,7 +12,7 @@ add_executable(BallJumper src/main.cpp
         include/Ball.h
         include/Utils.h
         include/Input.h
-        include/Resources.cpp
+        src/Resources.cpp
         include/Resources.h
 )
 

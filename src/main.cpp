@@ -15,7 +15,7 @@ public:
 		SetConfigFlags(FLAG_MSAA_4X_HINT);
 		SetConfigFlags(FLAG_WINDOW_RESIZABLE);
 		SetTargetFPS(60);
-		InitWindow(800, 800, "BallJumper");
+		InitWindow(GameConstants::DEFAULT_WINDOW_WIDTH, GameConstants::DEFAULT_WINDOW_HEIGHT, "BallJumper");
 
 		Resources::LoadAllTextures();
 
