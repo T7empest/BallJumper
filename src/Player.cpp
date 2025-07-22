@@ -28,7 +28,6 @@ void Player::Update(float dt)
 		m_fallingSpeed += m_acceleration;
 	m_acceleration = PLAYER_ACCELERATION;
 	m_speed = PLAYER_SPEED;
-	DrawText(std::to_string(m_isGrounded).c_str(), 50, 50, 12, RED);
 }
 
 void Player::Jump(float dt)
@@ -48,7 +47,7 @@ void Player::CheckCollision(std::vector<Ball*> balls)
 	for (const auto ball : balls)
 	{
 		if (CheckCollisionCircles(
-				ball->GetPosition(),
+				ball->GetCenter(),
 				ball->GetRadius(),
 				m_collisionCirclePos,
 				m_collisionCircleRadius)
@@ -73,7 +72,7 @@ void Player::CheckCollision(std::vector<Ball*> balls)
 
 CollisionDirection Player::GetCollisionDirection(Ball* ball)
 {
-	Vector2 delta = Utils::Vector2Subtract(m_collisionCirclePos, ball->GetPosition());
+	Vector2 delta = Utils::Vector2Subtract(m_collisionCirclePos, ball->GetCenter());
 	float angle = atan2f(delta.y, delta.x) * (180.0f / PI); // in degrees
 
 	if (angle >= -45 && angle <= 45)
@@ -87,7 +86,7 @@ CollisionDirection Player::GetCollisionDirection(Ball* ball)
 
 void Player::FixCollisionOverlap(Ball* ball)
 {
-	float centersDistance = Utils::GetDistance(m_collisionCirclePos, ball->GetPosition());
+	float centersDistance = Utils::GetDistance(m_collisionCirclePos, ball->GetCenter());
 	float correctDistance = m_collisionCircleRadius + ball->GetRadius();
 
 	// if (ball->GetPosition().x > m_position.x && Input::IsLeftHeld())
@@ -101,8 +100,8 @@ void Player::FixCollisionOverlap(Ball* ball)
 
 	float overlap = correctDistance - centersDistance;
 
-	float dx = m_collisionCirclePos.x - ball->GetPosition().x;
-	float dy = m_collisionCirclePos.y - ball->GetPosition().y;
+	float dx = m_collisionCirclePos.x - ball->GetCenter().x;
+	float dy = m_collisionCirclePos.y - ball->GetCenter().y;
 
 	float nx = dx / centersDistance;
 	float ny = dy / centersDistance;

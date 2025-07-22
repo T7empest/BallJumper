@@ -20,8 +20,13 @@ void Game::Init()
 
 void Game::Update(float dt)
 {
+	for (auto ball : m_balls)
+	{
+		ball->Update(dt);
+	}
 	m_player->CheckCollision(m_balls);
 	m_player->Update(dt);
+
 	UpdateCamera();
 }
 
@@ -55,7 +60,7 @@ void Game::InitCamera()
 		GameConstants::DEFAULT_WINDOW_HEIGHT / 2
 	);
 	camera.rotation = 0.0f;
-	camera.zoom = 0.5f;
+	camera.zoom = 0.8f;
 }
 
 void Game::UpdateCamera()

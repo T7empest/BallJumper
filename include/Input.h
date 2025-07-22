@@ -18,7 +18,10 @@ namespace Input
 	}
 	inline bool IsJumpPressed()
 	{
-		return IsKeyDown(KEY_SPACE) || IsKeyDown(KEY_W) || IsKeyDown(KEY_UP);
+		return IsKeyDown(KEY_SPACE)
+				|| IsKeyDown(KEY_W)
+				|| IsKeyDown(KEY_UP)
+				|| IsKeyPressed(KEY_SPACE);
 	}
 }
 
