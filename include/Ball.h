@@ -4,10 +4,7 @@
 
 #ifndef BALL_H
 #define BALL_H
-#include <iostream>
 #include <raylib.h>
-#include <__ostream/basic_ostream.h>
-
 
 class Ball {
 public:
@@ -15,6 +12,7 @@ public:
 		: m_position(Vector2(posX, posY))
 	{
 		m_balloonType = GetRandomValue(1, 4);
+		m_balloonSpeed = static_cast<double>(GetRandomValue(30, 200)) + GetTime();
 	}
 
 	void Update(float dt);
@@ -22,11 +20,13 @@ public:
 
 	Vector2 GetCenter() const;
 	float GetRadius() const;
+	float GetSpeed() const;
 
 private:
 	Vector2 m_position;
 	Vector2 m_center;
 	float m_radius = 73;
+	float m_balloonSpeed;
 	int m_balloonType;
 	Rectangle m_textureContainer = {};
 };

@@ -3,9 +3,7 @@
 #include "Game.h"
 #include "raylib.h"
 #include "Resources.h"
-
-#define EXIT_SUCCESS 0
-#define EXIT_FAILURE (-1)
+#include "SimpleECS.h"
 
 class Application
 {
@@ -32,6 +30,7 @@ public:
 			ClearBackground(SKYBLUE);
 			game.Draw();
 			EndDrawing();
+
 		}
 
 		Resources::UnloadAllTextures();

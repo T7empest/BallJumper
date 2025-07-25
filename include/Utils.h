@@ -20,6 +20,10 @@ namespace Utils
 
 		return sqrt((dx * dx) + (dy * dy));
 	}
+	inline float DotProduct(Vector2 a, Vector2 b)
+	{
+		return a.x * b.x + a.y * b.y;
+	}
 }
 
 #endif //UTILS_H

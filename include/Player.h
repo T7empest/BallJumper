@@ -10,9 +10,10 @@
 #include "Ball.h"
 #include "Resources.h"
 
-constexpr float PLAYER_SPEED = 100;
-constexpr float PLAYER_ACCELERATION = 5;
-constexpr float PLAYER_FALLING_SPEED = 200;
+constexpr float PLAYER_SPEED = 300;
+constexpr float PLAYER_ACCELERATION = 19;
+constexpr float PLAYER_FALLING_SPEED = 400;
+constexpr float PLAYER_JUMP_HEIGHT = 1000;
 
 enum class CollisionDirection
 {
@@ -28,7 +29,7 @@ public:
 	Player(float posX, float posY)
 		: m_position(Vector2(posX, posY)) {}
 
-	void Draw();
+	void Draw() const;
 
 	void Update(float dt);
 
@@ -38,14 +39,15 @@ public:
 
 	void Hold(float dt);
 
-	void CheckCollision(std::vector<Ball*> balls);
+	void CheckCollision(std::vector<Ball*> balls, float dt);
 
-	CollisionDirection GetCollisionDirection(Ball* ball);
+	CollisionDirection GetCollisionDirection(const Ball* ball) const;
 
-	void FixCollisionOverlap(Ball* ball);
+	void FixCollisionOverlap(const Ball* ball);
 
-	Vector2 GetCenterPosition();
+	Vector2 GetCenterPosition() const;
 
+	float GetSpeed() const;
 
 private:
 	Vector2 m_position;
@@ -66,6 +68,7 @@ private:
 
 	bool m_isGrounded = false;
 	bool m_hitWall = false;
+	Ball* m_collidedBall;
 };
 
 

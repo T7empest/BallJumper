@@ -8,8 +8,8 @@
 
 void Ball::Update(float dt)
 {
-	m_position.y += 50 * dt;
 	m_center = Vector2(m_position.x + m_radius, m_position.y + m_radius + 17);
+	m_position.y += m_balloonSpeed * dt;
 }
 
 void Ball::Draw()
@@ -66,6 +66,7 @@ void Ball::Draw()
 			WHITE
 		);
 	}
+
 	else
 	{
 		throw std::runtime_error("failed to draw balloon");
@@ -80,4 +81,9 @@ Vector2 Ball::GetCenter() const
 float Ball::GetRadius() const
 {
 	return m_radius;
+}
+
+float Ball::GetSpeed() const
+{
+	return m_balloonSpeed;
 }

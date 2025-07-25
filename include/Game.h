@@ -25,12 +25,15 @@ public:
 
 	void InitCamera();
 	void UpdateCamera();
+	void addNewBall();
 
 private:
 	std::vector<Ball*> m_balls;
-	Player* m_player = nullptr;
 
 	Camera2D camera = { 0 };
+	double m_lastBallSpawnTime = 0.0;
+	const double m_intervalOfBallSpawn = 1.50;
+	Player* m_player = nullptr;
 };
 
 
