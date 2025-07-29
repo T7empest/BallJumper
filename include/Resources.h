@@ -12,6 +12,7 @@ namespace Resources
 {
 	extern Texture2D playerTexture;
 	extern Texture2D balloonSpriteSheet;
+	extern Texture2D parallaxBackground;
 
 	void LoadAllTextures();
 	void UnloadAllTextures();

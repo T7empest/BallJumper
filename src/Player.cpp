@@ -13,30 +13,23 @@
 
 void Player::Draw() const
 {
+	DrawText(std::to_string(m_fallingSpeed).c_str(), 300, 300, 40, WHITE);
 	DrawTextureRec(*m_texture, m_textureContainer, m_position, WHITE);
-	DrawText(std::to_string(m_fallingSpeed).c_str(), m_position.x, m_position.y, 20, RED);
-	DrawText(std::to_string(m_position.y / 100).c_str(), m_position.x, m_position.y - 100, 20, BLACK);
 }
 
 void Player::Update(float dt)
 {
 	Move(dt);
+
 	if (!m_isGrounded)
 	{
 		m_fallingSpeed += m_acceleration;
 		m_position.y += m_fallingSpeed * dt;
 	}
-	else
-	{
-		m_fallingSpeed = 0;
-	}
+
 	m_acceleration = PLAYER_ACCELERATION;
 	m_speed = PLAYER_SPEED;
-	if (m_isGrounded)
-	{
-		m_fallingSpeed = 0;
-		m_acceleration = 0;
-	}
+
 }
 
 void Player::Jump(float dt)
@@ -65,26 +58,25 @@ void Player::CheckCollision(std::vector<Ball*> balls, float dt)
 	// bind the position of hitbox to player position
 	m_collisionCirclePos.x = m_position.x + (abs(m_textureContainer.width) / 2);
 	m_collisionCirclePos.y = m_position.y + 20 + (m_textureContainer.height / 2);
-	bool collided = false;
 	for (const auto ball : balls)
 	{
 		if (CheckCollisionCircles(m_collisionCirclePos, m_collisionCircleRadius, ball->GetCenter(), ball->GetRadius()))
 		{
-			collided = true;
 			FixCollisionOverlap(ball);
 			CollisionDirection direction = GetCollisionDirection(ball);
 			if (direction == CollisionDirection::DOWN)
 			{
+				std::cout << "coll detected " << ball->GetSpeed() << std::endl;
+				m_collidedBall = ball;
 				m_acceleration = 0;
 				m_isGrounded = true;
-				m_position.y += ball->GetSpeed() * dt;
+				m_fallingSpeed = ball->GetSpeed();
 			}
 			if (direction == CollisionDirection::LEFT || direction == CollisionDirection::RIGHT)
 			{
+				m_collidedBall = ball;
 				m_hitWall = true;
-				m_position.y += ball->GetSpeed() * dt;
 			}
-			m_collidedBall = ball;
 			break; // stop checking other balls once you hit one
 		}
 		m_isGrounded = false;
@@ -144,7 +136,7 @@ void Player::FixCollisionOverlap(const Ball* ball)
 	// if (ball->GetPosition().x < m_position.x && Input::IsRightHeld())
 	// 	return;
 
-	if (centersDistance >= correctDistance + 5.0f)
+	if (centersDistance >= correctDistance)
 		return;
 
 	float overlap = correctDistance - centersDistance;

@@ -10,9 +10,9 @@
 #include "Ball.h"
 #include "Resources.h"
 
-constexpr float PLAYER_SPEED = 300;
-constexpr float PLAYER_ACCELERATION = 19;
-constexpr float PLAYER_FALLING_SPEED = 400;
+constexpr float PLAYER_SPEED = 350;
+constexpr float PLAYER_ACCELERATION = 18;
+constexpr float PLAYER_FALLING_SPEED = 350;
 constexpr float PLAYER_JUMP_HEIGHT = 1000;
 
 enum class CollisionDirection

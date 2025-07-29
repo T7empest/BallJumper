@@ -19,19 +19,9 @@ public:
 
 		Game game;
 		game.Init();
+		game.MenuLoop();
 
-		while (!WindowShouldClose())
-		{
-			const float dt = GetFrameTime();
-
-			game.Update(dt);
-
-			BeginDrawing();
-			ClearBackground(SKYBLUE);
-			game.Draw();
-			EndDrawing();
-
-		}
+		game.Loop();
 
 		Resources::UnloadAllTextures();
 		game.DeInit();

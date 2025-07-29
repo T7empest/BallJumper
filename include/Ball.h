@@ -12,7 +12,7 @@ public:
 		: m_position(Vector2(posX, posY))
 	{
 		m_balloonType = GetRandomValue(1, 4);
-		m_balloonSpeed = static_cast<double>(GetRandomValue(30, 200)) + GetTime();
+		m_balloonSpeed = static_cast<double>(GetRandomValue(15, 108)) + GetTime();
 	}
 
 	void Update(float dt);
